@@ -219,6 +219,10 @@ def copy_bossfiles():
                         traceback.print_exc()
 
 def main():
+    global spl_DataID
+    spl_DataID = int(open(SPL_V16_PATH + ".id", "r").read())
+    print("Data ID Loaded: " + str(spl_DataID))
+
     print("Erasing previous data...")
     shutil.rmtree("content")
     shutil.rmtree("tasksheet")
