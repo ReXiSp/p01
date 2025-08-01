@@ -226,8 +226,10 @@ def main():
     print("Erasing previous data...")
     shutil.rmtree("content")
     shutil.rmtree("tasksheet")
+    shutil.rmtree("cemusheet")
     os.mkdir("content")
     os.mkdir("tasksheet")
+    os.mkdir("cemusheet")
     load_bossfiles()
     print("Generating fake schedules...")
     for region in SPL_REGION_LIST:
@@ -236,6 +238,10 @@ def main():
             os.makedirs("tasksheet/1/" + region + "/", exist_ok=True)
             with open("tasksheet/1/" + region + "/" + task, "w") as f:
                 f.write(tasksheet[0])
+            
+            os.makedirs("cemusheet/1/" + region + "/", exist_ok=True)
+            with open("cemusheet/1/" + region + "/" + task, "w") as f:
+                f.write(tasksheet[0].replace("10162c00", "10162b00"))
 
     copy_bossfiles()
 
